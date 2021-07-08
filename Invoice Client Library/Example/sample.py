@@ -1,27 +1,29 @@
-import invoiceapi as im
+from main import InvoiceMainClient
 
-API_obj=im.Invoice_API_Client()
+im=InvoiceMainClient()
 
-print(API_obj.refreshaccessToken())
+print(im.customer.getCustomerData())
 
-print(API_obj.createCustomer({
+print(im.item.getitemData())
+
+print(im.invoice.getinvoiceData())
+
+print(im.customer.createCustomer({
     "contact_name": "ABC Enterprises",
     "company_name": "ABC Enterprises"
 }))
 
-customer_data = API_obj.getCustomerById("576992000000014008")
+customer_data = im.customer.getCustomerById("576992000000014008")
 print(customer_data)
 print(customer_data['contact']['contact_name'])
 
-print(API_obj.getCustomerData())
-
-print(API_obj.updateCustomer("576992000000018014",{
+print(im.customer.updateCustomer("576992000000018014",{
     "contact_name": "ABC Enterprises",
     "company_name": "ABC Enterprises",
     "website": "www.abc.com"
     }
 ))
 
-print(API_obj.deleteCustomer("576992000000018014"))
+print(im.customer.deleteCustomer("576992000000018014"))
 
 
