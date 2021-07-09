@@ -18,5 +18,4 @@ class Response:
         }
 
     def getResposnse(self,method,url,parameters=None):
-        res=requests.request(method,url,headers=self.custom_header,params=parameters)
-        return res.json()
+        return requests.request(method,url,headers=self.custom_header,params=parameters).json()
